@@ -55,7 +55,7 @@ namespace Proto.Remote
         public void PostSystemMessage(object msg)
         {
             _systemMessages.Push(msg);
-            
+
 
             // Logger.LogDebug("[EndpointWriterMailbox] received System Message {@Message}", msg);
             Schedule();
@@ -91,9 +91,9 @@ namespace Proto.Remote
 
                     _suspended = sys switch
                     {
-                        SuspendMailbox _         => true,
-                        EndpointConnectedEvent _ => false,
-                        _                        => _suspended
+                        SuspendMailbox _ => true,
+                        ResumeMailbox _  => false,
+                        _                => _suspended
                     };
 
                     m = sys;
